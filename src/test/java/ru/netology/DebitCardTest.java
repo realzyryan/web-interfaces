@@ -7,10 +7,10 @@ import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-public class debitCardTest {
+public class DebitCardTest {
 
     @Test
-    void debitCardApplication() throws InterruptedException {
+    void DebitCardApplication() throws InterruptedException {
         open("http://localhost:9999/");
         $(".heading").shouldHave(exactText("Заявка на дебетовую карту"));
         $(".heading_size_s").shouldHave(exactText("Персональные данные"));
@@ -22,7 +22,7 @@ public class debitCardTest {
         form.$("[data-test-id=agreement]").click();
         form.$("[data-test-id=agreement] .checkbox__text").shouldHave(exactText("Я соглашаюсь с условиями обработки и использования моих персональных данных и разрешаю сделать запрос в бюро кредитных историй"));
         $(".button_view_extra").click();
-        $(".paragraph").shouldHave(exactText("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время."));
+        $("[data-test-id=order-success]").shouldHave(exactText("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время."));
 
     }
 }
